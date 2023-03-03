@@ -1,3 +1,18 @@
 ﻿@page "/"
+@using DesktopDashboard.Data.Helpers
+@using DesktopDashboard.Data.Services
+@inject FileService fileService
 
+<h2>test</h2>
 
+@code {
+    private Dictionary<string, string> dict = new Dictionary<string, string>()
+    {
+        { "Key", "Value"}
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await fileService.WriteSettingsAsync(dict);
+    }
+}

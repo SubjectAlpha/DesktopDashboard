@@ -1,4 +1,5 @@
-﻿namespace DesktopDashboard.Data;
+﻿using DesktopDashboard.Data.Entities;
+namespace DesktopDashboard.Data.Services;
 
 public class WeatherForecastService
 {

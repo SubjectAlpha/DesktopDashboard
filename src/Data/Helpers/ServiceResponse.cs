@@ -7,7 +7,7 @@ namespace DesktopDashboard.Data.Helpers
 		public string Message;
 		public bool Success;
 
-		public ServiceResponse(bool success, string message = "", object o = null)
+		public ServiceResponse(bool success = false, string message = "", object o = null)
 		{
 			this.Message = message;
 			this.Success = success;

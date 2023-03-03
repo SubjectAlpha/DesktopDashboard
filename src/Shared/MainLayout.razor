@@ -7,7 +7,15 @@
 
     <main>
         <div class="top-row px-4">
-            <a>@theDate @theTime</a>
+            <a class="marquee col-lg mr-2">
+                <span>
+                    When I had journeyed half of our life's way, I found myself
+                    within a shadowed forest, for I had lost the path that
+                    does not stray. – (Dante Alighieri, <i>Divine Comedy</i>.
+                    1265-1321)
+                </span>
+            </a>
+            <a class="col-sm">@theDate @theTime</a>
         </div>
 
         <article class="content px-4">
@@ -29,8 +37,9 @@
 
     private void Tick(object _)
     {
-        theTime = DateTime.Now.ToLocalTime().ToShortTimeString();
-        theDate = DateTime.Now.ToLongDateString();
+        DateTime now = DateTime.Now;
+        theTime = now.ToLocalTime().ToShortTimeString();
+        theDate = now.ToLongDateString();
         InvokeAsync(StateHasChanged);
     }
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using DesktopDashboard.Data;
+using DesktopDashboard.Data.Services;
 
 namespace DesktopDashboard;
 
@@ -23,6 +23,7 @@ public static class MauiProgram
 #endif
 
 		builder.Services.AddSingleton<WeatherForecastService>();
+		builder.Services.AddSingleton<FileService>();
 
 		return builder.Build();
 	}

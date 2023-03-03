@@ -1,4 +1,4 @@
-﻿namespace DesktopDashboard.Data;
+﻿namespace DesktopDashboard.Data.Entities;
 
 public class WeatherForecast
 {
