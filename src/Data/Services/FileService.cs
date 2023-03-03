@@ -16,6 +16,52 @@ public class FileService
 		}
 	}
 
+	public async Task<ServiceResponse> ReadFileAsync(string fileName)
+	{
+		var response = new ServiceResponse();
+		try
+		{
+			response.DataObject = JsonConvert.DeserializeObject<IEnumerable<string>>(await File.ReadAllTextAsync(fileName));
+        }
+		catch (Exception ex)
+		{
+			response.Message = ex.Message;
+		}
+		return response;
+	}
+
+	public ServiceResponse WriteAffirmations(IEnumerable<string> affirmations)
+	{
+		return WriteAffirmationsAsync(affirmations).Result;
+	}
+
+	public async Task<ServiceResponse> WriteAffirmationsAsync(IEnumerable<string> affirmations)
+	{
+        var affirmationsPath = Path.Combine(rootDir, "affirmations.json");
+        var response = new ServiceResponse();
+
+		try
+		{
+            if (!File.Exists(affirmationsPath))
+            {
+                File.Create(affirmationsPath);
+            }
+
+            using var logStream = new FileStream(affirmationsPath, FileMode.Create, FileAccess.Write);
+            using var logWriter = new StreamWriter(logStream);
+            var s = JsonConvert.SerializeObject(affirmations);
+            await logWriter.WriteAsync(s);
+			await logWriter.DisposeAsync();
+			response.Success = true;
+        }
+		catch (Exception ex)
+		{
+			response.Message = ex.Message;
+		}
+
+		return response;
+	}
+
     public ServiceResponse WriteSettings(Dictionary<string, string> settings)
 	{
 		return WriteSettingsAsync(settings).Result;
@@ -33,10 +79,12 @@ public class FileService
 				File.Create(settingsPath);
             }
 
-            using var logStream = new FileStream(settingsPath, FileMode.Append, FileAccess.Write);
+            using var logStream = new FileStream(settingsPath, FileMode.Create, FileAccess.Write);
             using var logWriter = new StreamWriter(logStream);
 			var s = JsonConvert.SerializeObject(settings);
 			await logWriter.WriteAsync(s);
+
+			response.Success = true;
         }
 		catch (Exception ex)
 		{

@@ -4,8 +4,12 @@
 @inject FileService fileService
 
 <h2>test</h2>
+<input @bind="test" />
+
+<h1>@test</h1>
 
 @code {
+    private string? test;
     private Dictionary<string, string> dict = new Dictionary<string, string>()
     {
         { "Key", "Value"}
@@ -14,5 +18,10 @@
     protected override async Task OnInitializedAsync()
     {
         await fileService.WriteSettingsAsync(dict);
+        await fileService.WriteAffirmationsAsync(new List<string>
+        {
+            "Test",
+            "test1"
+        });
     }
 }
