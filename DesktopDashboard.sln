@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopDashboard", "DesktopDashboard\DesktopDashboard.csproj", "{5ACB7D9E-2D94-4902-8C38-263797B80BF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesktopDashboard", "src\DesktopDashboard.csproj", "{5ACB7D9E-2D94-4902-8C38-263797B80BF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
